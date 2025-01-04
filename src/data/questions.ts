@@ -22,7 +22,7 @@ export const questions = [
     question: 'What is your WhatsApp number?',
     type: 'tel' as const,
     placeholder: '+91 XXXXX XXXXX',
-    description: 'We\'ll add you to our WhatsApp group for event updates',
+    description: 'We\'ll add you to our WhatsApp group for meetup updates',
   },
   {
     id: 'profession',
