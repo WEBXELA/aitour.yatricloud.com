@@ -42,13 +42,13 @@ export const questions = [
     type: 'text' as const,
     placeholder: 'City, Country',
   },
-  {
-    id: 'linkedinProfile',
-    question: 'Your LinkedIn Profile URL',
-    type: 'url' as const,
-    placeholder: 'https://linkedin.com/in/your-profile',
-    description: 'Please provide your LinkedIn profile URL',
-  },
+  // {
+  //   id: 'linkedinProfile',
+  //   question: 'Your LinkedIn Profile URL',
+  //   type: 'url' as const,
+  //   placeholder: 'https://linkedin.com/in/your-profile',
+  //   description: 'Please provide your LinkedIn profile URL',
+  // },
   {
     id: 'specialRequest',
     question: 'Any special request for us?',
