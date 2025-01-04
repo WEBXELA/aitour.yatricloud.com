@@ -30,3 +30,24 @@
   -webkit-mask-composite: xor;
   pointer-events: none;
 }
+
+.text-gradient {
+  background: linear-gradient(135deg, #007cff 0%, #40a1ff 25%, #007cff 50%, #0056b3 75%, #007cff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 400% 400%;
+  animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
