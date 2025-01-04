@@ -13,20 +13,16 @@ export const useSurvey = () => {
     answers: {},
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { validateField, validateForm, getFieldError, clearErrors } =
-    useFormValidation();
+  const { validateField, validateForm, getFieldError, clearErrors } = useFormValidation();
 
   const handleStart = () => {
     setStarted(true);
-    setSurveyState((prev) => ({ ...prev, currentStep: 0 }));
+    setSurveyState(prev => ({ ...prev, currentStep: 0 }));
   };
 
   const handleBack = () => {
     if (surveyState.currentStep > 0) {
-      setSurveyState((prev) => ({
-        ...prev,
-        currentStep: prev.currentStep - 1,
-      }));
+      setSurveyState(prev => ({ ...prev, currentStep: prev.currentStep - 1 }));
     }
   };
 
@@ -34,10 +30,10 @@ export const useSurvey = () => {
     const currentQuestion = questions[surveyState.currentStep];
     validateField(currentQuestion.id, value, {
       ...surveyState.answers,
-      [currentQuestion.id]: value,
+      [currentQuestion.id]: value
     });
-
-    setSurveyState((prev) => ({
+    
+    setSurveyState(prev => ({
       ...prev,
       answers: { ...prev.answers, [currentQuestion.id]: value },
     }));
@@ -52,23 +48,16 @@ export const useSurvey = () => {
   const handleSubmit = async () => {
     const currentQuestion = questions[surveyState.currentStep];
     const currentValue = surveyState.answers[currentQuestion.id];
-
+    
     // Validate current field before proceeding
-    const isValid = validateField(
-      currentQuestion.id,
-      currentValue,
-      surveyState.answers
-    );
-
+    const isValid = validateField(currentQuestion.id, currentValue, surveyState.answers);
+    
     if (!isValid) {
       return;
     }
 
     if (surveyState.currentStep < questions.length - 1) {
-      setSurveyState((prev) => ({
-        ...prev,
-        currentStep: prev.currentStep + 1,
-      }));
+      setSurveyState(prev => ({ ...prev, currentStep: prev.currentStep + 1 }));
       return;
     }
 
@@ -82,18 +71,15 @@ export const useSurvey = () => {
     try {
       const success = await submitSurvey(surveyState.answers);
       if (success) {
-        toast.success(
-          'Thank you! We’re excited to connect with you! Looking forward to seeing you there!',
-          {
-            duration: 5000,
-            icon: '🎉',
-          }
-        );
+        toast.success('Thank yu! We’re excited to connect with you! Looking forward to seeing you at Microsoft AI Tour!', {
+          duration: 5000,
+          icon: '🎉'
+        });
         resetSurvey();
       }
     } catch (error) {
       console.error('Survey submission error:', error);
-
+      
       if (error instanceof ValidationError) {
         toast.error(`Validation error: ${error.message}`);
       } else if (error instanceof ApiError) {
@@ -105,9 +91,7 @@ export const useSurvey = () => {
           toast.error(`Server error: ${error.message}`);
         }
       } else if (error instanceof NetworkError) {
-        toast.error(
-          'Network error. Please check your connection and try again.'
-        );
+        toast.error('Network error. Please check your connection and try again.');
       } else {
         toast.error('An unexpected error occurred. Please try again.');
       }

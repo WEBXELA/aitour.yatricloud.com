@@ -38,6 +38,7 @@ export const QuestionInput: React.FC<Props> = ({
     case 'email':
     case 'text':
     case 'url':
+    case 'tel':
       return (
         <div>
           <input

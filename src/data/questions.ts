@@ -18,6 +18,13 @@ export const questions = [
     placeholder: 'Last Name',
   },
   {
+    id: 'phoneNumber',
+    question: 'What is your WhatsApp number?',
+    type: 'tel' as const,
+    placeholder: '+91 XXXXX XXXXX',
+    description: 'We\'ll add you to our WhatsApp group for event updates',
+  },
+  {
     id: 'profession',
     question: 'What is your profession?',
     type: 'text' as const,

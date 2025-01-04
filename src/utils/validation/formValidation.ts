@@ -6,7 +6,8 @@ import {
   validateLinkedInUrl,
   validateUrl,
   validateReview,
-  validateProfession
+  validateProfession,
+  validatePhoneNumber
 } from './validators';
 
 interface ValidationResult {
@@ -27,15 +28,15 @@ export const validateFormData = (data: SurveyData): ValidationResult => {
   const lastNameError = validateName(data.lastName, 'Last name');
   if (lastNameError) errors.lastName = lastNameError;
 
+  const phoneError = validatePhoneNumber(data.phoneNumber);
+  if (phoneError) errors.phoneNumber = phoneError;
+
   const professionError = validateProfession(data.profession);
   if (professionError) errors.profession = professionError;
 
   // Optional fields validation
   const linkedInError = validateLinkedInUrl(data.linkedinProfile);
   if (linkedInError) errors.linkedinProfile = linkedInError;
-
-  const certificationError = validateUrl(data.certificationLink, 'certification');
-  if (certificationError) errors.certificationLink = certificationError;
 
   const reviewError = validateReview(data.review);
   if (reviewError) errors.review = reviewError;

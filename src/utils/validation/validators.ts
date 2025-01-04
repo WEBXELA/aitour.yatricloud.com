@@ -13,6 +13,15 @@ export const validateName = (name: string, field: string): string | null => {
   return null;
 };
 
+export const validatePhoneNumber = (phone: string): string | null => {
+  if (!phone) return 'Phone number is required';
+  // Allow +, spaces, and numbers, minimum 10 digits
+  if (!/^\+?[\d\s]{10,}$/.test(phone.replace(/\s/g, ''))) {
+    return 'Please enter a valid phone number with country code';
+  }
+  return null;
+};
+
 export const validateProfession = (profession: string): string | null => {
   if (!profession?.trim()) return 'Profession is required';
   if (profession.length < 2) return 'Profession is too short';

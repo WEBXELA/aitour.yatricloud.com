@@ -1,7 +1,7 @@
 export interface SurveyQuestion {
   id: string;
   question: string;
-  type: 'email' | 'text' | 'select' | 'url' | 'textarea' | 'checkbox';
+  type: 'email' | 'text' | 'select' | 'url' | 'textarea' | 'checkbox' | 'tel';
   placeholder?: string;
   options?: string[];
   description?: string;
