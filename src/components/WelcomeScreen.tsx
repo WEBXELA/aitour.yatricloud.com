@@ -39,7 +39,7 @@ export const WelcomeScreen: React.FC<Props> = ({ onStart }) => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-6xl font-bold text-gray-900 mb-8"
+          className="text-6xl font-bold mb-8 text-gradient"
         >
           Microsoft AI Tour Bengaluru
         </motion.h1>
